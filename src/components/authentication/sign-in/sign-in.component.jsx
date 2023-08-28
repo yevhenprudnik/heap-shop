@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import FromInput from '../form-input/form-input.component';
+import FromInput from '../../form-input/form-input.component';
 import {
   createUser,
   signInWithGooglePopup,
   signInAuthWithEmailAndPassword,
-} from '../../utils/firebase/firebase.utils';
-import Button from '../button/button.component';
+} from '../../../utils/firebase/firebase.utils';
+import Button from '../../button/button.component';
 import './sign-in.styles.scss';
 
 const defaultFromValues = {
@@ -40,7 +40,7 @@ const SignIn = () => {
 
       setFormValues(defaultFromValues);
     } catch (error) {
-      console.log('Error while signing in user: ', error);
+      console.log('Error while signing in user: ', error.message);
     }
   };
 
@@ -69,11 +69,7 @@ const SignIn = () => {
 
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button
-            type="button"
-            buttonType="google"
-            onClick={signInWithGoogle}
-          >
+          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             Google sign in
           </Button>
         </div>

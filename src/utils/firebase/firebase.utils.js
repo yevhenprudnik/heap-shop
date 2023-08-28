@@ -9,7 +9,7 @@ import {
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 initializeApp({
-  apiKey: 'AIzaSyAoEUDlQ2iyGoy_OC-7NuJLV47T2_hSrEE',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'heap-shop-9fc28.firebaseapp.com',
   projectId: 'heap-shop-9fc28',
   storageBucket: 'heap-shop-9fc28.appspot.com',

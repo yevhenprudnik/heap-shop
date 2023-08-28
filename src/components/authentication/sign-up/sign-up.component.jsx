@@ -2,10 +2,10 @@ import { useState } from 'react';
 import {
   createUser,
   createAuthUserWithEmailAndPassword,
-} from '../../utils/firebase/firebase.utils';
-import FromInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
-import './sign-up.styles.scss'
+} from '../../../utils/firebase/firebase.utils';
+import FromInput from '../../form-input/form-input.component';
+import Button from '../../button/button.component';
+import './sign-up.styles.scss';
 
 const defaultFromValues = {
   displayName: '',
@@ -43,7 +43,7 @@ const SignUp = () => {
 
       setFormValues(defaultFromValues);
     } catch (error) {
-      console.log('Error while creating user: ', error);
+      console.log('Error while creating user: ', error.message);
     }
   };
 
