@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import {
-  createUser,
-  createAuthUserWithEmailAndPassword,
-} from '../../../utils/firebase/firebase.utils';
+import { signUpWith } from '../auth.helpers';
 import FromInput from '../../form-input/form-input.component';
 import Button from '../../button/button.component';
 import './sign-up.styles.scss';
@@ -34,12 +31,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUser(response.user, { displayName });
+      await signUpWith.emailAndPassword(email, password, displayName);
 
       setFormValues(defaultFromValues);
     } catch (error) {

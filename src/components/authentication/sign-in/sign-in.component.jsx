@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import FromInput from '../../form-input/form-input.component';
-import {
-  createUser,
-  signInWithGooglePopup,
-  signInAuthWithEmailAndPassword,
-} from '../../../utils/firebase/firebase.utils';
+import { signInWith } from '../auth.helpers';
 import Button from '../../button/button.component';
 import './sign-in.styles.scss';
 
@@ -15,14 +11,7 @@ const defaultFromValues = {
 
 const SignIn = () => {
   const [formValues, setFormValues] = useState(defaultFromValues);
-
   const { email, password } = formValues;
-
-  const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup();
-
-    await createUser(response.user);
-  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -34,9 +23,7 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthWithEmailAndPassword(email, password);
-
-      console.log(response);
+      await signInWith.emailAndPassword(email, password);
 
       setFormValues(defaultFromValues);
     } catch (error) {
@@ -69,7 +56,7 @@ const SignIn = () => {
 
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button type="button" buttonType="google" onClick={signInWith.google}>
             Google sign in
           </Button>
         </div>
